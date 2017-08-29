@@ -275,6 +275,10 @@ def init_match(candidate_match, test_instance, gold_instance, node_weight_fn):
     c2 = list(candidate_match[i])
     found = False
     while len(c2) != 1:
+      if len(c2) == 0:
+        result[i] = result[i-1]
+        found = True
+        break
       rid = random.randint(0, len(c2) - 1)
       if c2[rid] in matched_dict:
         c2.pop(rid)

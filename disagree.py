@@ -84,10 +84,12 @@ def hilight_disagreement(test_amrs, gold_amr, iter_num, aligner=default_aligner,
 def get_disagreement_graphs(smatchgraphs, aligner=default_aligner,
                             unmatch_dead_nodes=True):
   if unmatch_dead_nodes:
-    return [(g.smatch2graph(node_weight_fn=aligner.node_weight_fn,
-                            edge_weight_fn=aligner.edge_weight_fn),
-             score) \
-            for (g, score) in smatchgraphs]
+    temp = []
+    for (g, score) in smatchgraphs:
+      temp.append((g.smatch2graph(node_weight_fn=aligner.node_weight_fn,
+                              edge_weight_fn=aligner.edge_weight_fn),
+               score))
+      return temp
   else:
     return [(g.smatch2graph(), score) for (g, score) in smatchgraphs]
 

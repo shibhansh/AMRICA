@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+ 
 """
 amr.py
 
@@ -227,7 +227,8 @@ class AMR(object):
           cur_charseq[:] = []
           if variable_name in var_dict:
             print >> sys.stderr, "Duplicate variable ", variable_name, " in parsing AMR"
-            return None
+            # 0/0
+            # return None
           stack.append(variable_name)
           var_list.append(variable_name)
           if cur_attr_name != "":

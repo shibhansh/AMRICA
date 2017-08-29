@@ -151,7 +151,8 @@ class SmatchGraph:
           del self.unmatched_rel1[(self.gold_ind[var], const_match)]
         else:
           gold_edge_lbl = reln
-          self.unmatched_rel1[(self.gold_ind[var], const_match)].remove(reln)
+          if reln in self.unmatched_rel1[(self.gold_ind[var], const_match)]:
+            self.unmatched_rel1[(self.gold_ind[var], const_match)].remove(reln)
         break
 
     self.add_node(node_hash, const, gold_node_lbl)
@@ -163,7 +164,8 @@ class SmatchGraph:
     if (self.gold_ind[v1], self.gold_ind[v2]) in self.gold_rel2_t:
       if reln in self.gold_rel2_t[(self.gold_ind[v1], self.gold_ind[v2])]:
         gold_lbl = reln
-        self.unmatched_rel2[(self.gold_ind[v1], self.gold_ind[v2])].remove(reln)
+        if reln in self.unmatched_rel2[(self.gold_ind[v1], self.gold_ind[v2])]:
+          self.unmatched_rel2[(self.gold_ind[v1], self.gold_ind[v2])].remove(reln)
     self.add_edge(v1, v2, reln, gold_lbl)
 
 
